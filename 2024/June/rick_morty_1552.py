@@ -2,7 +2,11 @@ class Solution(object):
     def maxDistance(self, position, m):
         position.sort()
         print(position)
-        for i in range(len(position))
+        for i in range(len(position)):
+            for j in range(len(position)):
+                dist = position[i] - position[j]
+                
+
 
         """
         :type position: List[int]

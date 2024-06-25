@@ -1,3 +1,5 @@
+from collections import deque
+import queue
 class failedSolution(object):
     def checkLength(self, num1, num2, limit):
         if num1 - num2 <= limit:
@@ -54,3 +56,5 @@ class Solution(object):
             max_length = max(max_length, right - left + 1)
         
         return max_length
+    
+# A lot more complicated of a question then I had initially anticipated. 
