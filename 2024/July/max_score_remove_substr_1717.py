@@ -20,3 +20,8 @@ class Solution(object):
             score, s = self.get_values(s, "ba", y, score)
             score, s = self.get_values(s, "ab", x, score)
         return score
+    
+
+#### kinda correct ###
+
+### Needed some help with part of the get_values() function

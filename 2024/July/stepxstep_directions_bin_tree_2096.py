@@ -23,3 +23,8 @@ class Solution(object):
             dest.pop()
         
         return 'U'*len(start) + ''.join(reversed(dest))
+    
+
+##Incorrect###
+
+# Could not find a good solution, so I decided to just comment out an answer that someone had submitted.
