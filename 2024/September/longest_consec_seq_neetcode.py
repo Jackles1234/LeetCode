@@ -1,4 +1,4 @@
-def longestConsecutive(self, nums: List[int]) -> int:
+def longestConsecutive(self, nums):
         numSet = set(nums)
         longest = 0
 
