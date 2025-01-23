@@ -15,4 +15,10 @@ LEFT JOIN Transactions T ON (V.visit_id = T.visit_id)
 WHERE T.visit_id IS NULL
 GROUP BY customer_id;
 
-
+-- Write your MySQL query statement below
+SELECT id
+FROM (
+    SELECT id,temperature, LAG(temperature) OVER (ORDER BY id) AS previous_temperature
+    FROM Weather)
+AS WeatherLagged
+WHERE previous_temperature IS NOT NULL AND previous_temperature < temperature;
