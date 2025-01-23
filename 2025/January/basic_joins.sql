@@ -16,9 +16,34 @@ WHERE T.visit_id IS NULL
 GROUP BY customer_id;
 
 -- Write your MySQL query statement below
-SELECT id
-FROM (
-    SELECT id,temperature, LAG(temperature) OVER (ORDER BY id) AS previous_temperature
-    FROM Weather)
-AS WeatherLagged
-WHERE previous_temperature IS NOT NULL AND previous_temperature < temperature;
+WITH PreviousWeatherData AS
+(
+    SELECT 
+        id,
+        recordDate,
+        temperature, 
+        LAG(temperature, 1) OVER (ORDER BY recordDate) AS PreviousTemperature,
+        LAG(recordDate, 1) OVER (ORDER BY recordDate) AS PreviousRecordDate
+    FROM 
+        Weather
+)
+SELECT 
+    id 
+FROM 
+    PreviousWeatherData
+WHERE 
+    temperature > PreviousTemperature
+AND 
+    recordDate = DATE_ADD(PreviousRecordDate, INTERVAL 1 DAY);
+
+-------------------------------------------------------------
+SELECT 
+    w1.id
+FROM 
+    Weather w1
+JOIN 
+    Weather w2
+ON 
+    DATEDIFF(w1.recordDate, w2.recordDate) = 1
+WHERE 
+    w1.temperature > w2.temperature;
